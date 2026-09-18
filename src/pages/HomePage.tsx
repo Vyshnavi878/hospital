@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PublicNavbar } from "@/components/common/PublicNavbar";
 import { PublicFooter } from "@/components/common/PublicFooter";
+import { DoctorReelsSection } from "@/components/common/DoctorReelsSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-dental.jpg";
@@ -29,7 +30,7 @@ import {
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* ========================================================================= */}
@@ -140,20 +141,30 @@ export const HomePage: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* Floating Trust Card */}
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 shadow-lg text-left">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <h4 className="font-heading font-bold text-sm text-slate-900 leading-snug">
-                          TRUDENT Dental Hospital
-                        </h4>
-                        <p className="text-xs text-slate-500 font-medium mt-0.5">
-                          Modern Operatory & Comprehensive Oral Care
+                  {/* Floating Trust Card featuring Dr. Deepa Koduri */}
+                  <div className="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 shadow-lg text-left">
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-12 w-12 rounded-xl overflow-hidden border-2 border-primary/25 shadow-xs shrink-0 bg-slate-100">
+                        <img
+                          src="/images/clinic/dr-deepa-portrait.png"
+                          alt="Dr. Deepa Koduri, BDS, MDS"
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-white" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-2">
+                          <h4 className="font-heading font-bold text-xs sm:text-sm text-slate-900 leading-snug truncate">
+                            Dr. Deepa Koduri, BDS, MDS
+                          </h4>
+                          <Badge className="bg-primary/10 text-primary border-primary/20 text-[10px] font-bold px-2 py-0.5 shrink-0">
+                            Chief Specialist
+                          </Badge>
+                        </div>
+                        <p className="text-[11px] text-slate-600 font-medium mt-0.5 truncate">
+                          Root Canal Treatment Specialist • Micro-Endodontics
                         </p>
                       </div>
-                      <Badge className="bg-primary/10 text-primary border-primary/20 text-[11px] font-bold px-2.5 py-0.5 shrink-0">
-                        In-Person Care
-                      </Badge>
                     </div>
                   </div>
                 </div>
@@ -264,10 +275,10 @@ export const HomePage: React.FC = () => {
             <Link to="/treatments" className="shrink-0">
               <Button
                 variant="outline"
-                className="font-semibold text-xs sm:text-sm border-slate-300 text-slate-700 hover:bg-white hover:border-slate-400 rounded-xl gap-2 cursor-pointer h-11 px-5 shadow-2xs group"
+                className="font-semibold text-xs sm:text-sm border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-400 rounded-xl gap-2 cursor-pointer h-11 px-5 shadow-2xs group transition-all"
               >
                 <span>View All Treatments</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1 text-slate-600 group-hover:text-slate-900" />
               </Button>
             </Link>
           </div>
@@ -396,144 +407,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. MEET OUR DOCTOR (STRICTLY ONLY ONE DOCTOR - NO FAKE DOCTORS)           */}
+      {/* 3. DOCTOR SUGGESTIONS & INSTAGRAM REELS SHOWCASE                          */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-10">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold text-primary">
-                <Stethoscope className="h-3.5 w-3.5" />
-                <span>CLINICAL LEADERSHIP</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Meet Our Doctor
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Experienced, patient-focused dental care you can rely on for your entire family.
-              </p>
-            </div>
-
-            {/* Exactly One Single Doctor Profile Card */}
-            <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-teal-50/20 shadow-md p-6 sm:p-9 text-left relative overflow-hidden">
-              {/* Subtle ambient accent */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
-
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
-                {/* Doctor Avatar / Monogram */}
-                <div className="relative shrink-0">
-                  <div className="flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-2xl bg-gradient-to-br from-primary via-teal-600 to-accent text-white font-heading font-extrabold text-3xl shadow-md">
-                    DK
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-1 rounded-full border-2 border-white shadow-xs">
-                    <CheckCircle2 className="h-4 w-4" />
-                  </div>
-                </div>
-
-                {/* Doctor Details */}
-                <div className="space-y-3 min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-bold px-2.5 py-0.5">
-                      Endodontist
-                    </Badge>
-                    <Badge variant="outline" className="text-xs font-semibold text-slate-700 border-slate-300 bg-white">
-                      Root Canal Specialist
-                    </Badge>
-                  </div>
-
-                  <div>
-                    <h3 className="font-heading font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">
-                      Dr. Deepa Koduri
-                    </h3>
-                    <p className="text-xs sm:text-sm font-semibold text-primary mt-0.5">
-                      Endodontist • Root Canal Specialist
-                    </p>
-                  </div>
-
-                  {/* Professional Approach */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-teal-50/80 border border-teal-200/60 text-xs font-medium text-teal-900">
-                    <span>Gentle</span>
-                    <span className="text-teal-400">•</span>
-                    <span>Stress-free</span>
-                    <span className="text-teal-400">•</span>
-                    <span>Evidence-based</span>
-                  </div>
-
-                  {/* Advanced Technology */}
-                  <div className="text-xs sm:text-sm text-slate-600 space-y-1">
-                    <span className="font-medium text-slate-700 block">
-                      Advanced dental care with modern technology, including:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-semibold text-slate-800">
-                      <span>Laser Dentistry</span>
-                      <span className="text-slate-300">•</span>
-                      <span>Implants</span>
-                      <span className="text-slate-300">•</span>
-                      <span>Aligners</span>
-                    </div>
-                  </div>
-
-                  {/* Location, Phone & Instagram */}
-                  <div className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 font-medium">
-                    <span className="flex items-center gap-1.5 text-slate-700">
-                      <MapPin className="h-3.5 w-3.5 text-primary" />
-                      <span>Kakinada</span>
-                    </span>
-                    <a
-                      href="tel:+919063584448"
-                      className="flex items-center gap-1.5 text-slate-700 hover:text-primary transition-colors"
-                    >
-                      <PhoneCall className="h-3.5 w-3.5 text-primary" />
-                      <span>+91 9063584448</span>
-                    </a>
-                    <a
-                      href="https://www.instagram.com/trudent_kakinada/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-pink-600 hover:text-pink-700 font-semibold transition-colors"
-                    >
-                      <Instagram className="h-3.5 w-3.5" />
-                      <span>@trudent_kakinada</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-6 mt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3.5">
-                <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
-                  <Link to="/doctors" className="w-full sm:w-auto">
-                    <Button
-                      variant="outline"
-                      className="w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-xl border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 gap-2 h-11 px-5 cursor-pointer"
-                    >
-                      <UserRound className="h-4 w-4 text-slate-500" />
-                      <span>View Doctor Profile</span>
-                    </Button>
-                  </Link>
-
-                  <a
-                    href="https://www.instagram.com/trudent_kakinada/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-4 rounded-xl border border-pink-200 bg-pink-50/50 hover:bg-pink-100/70 text-xs sm:text-sm font-semibold text-pink-700 transition-colors"
-                  >
-                    <Instagram className="h-4 w-4 text-pink-600" />
-                    <span>@trudent_kakinada</span>
-                  </a>
-                </div>
-
-                <Link to="/appointment?doctor=Dr.%20Deepa%20Koduri" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-xl gap-2 shadow-xs bg-primary hover:bg-primary/90 text-white h-11 px-6 cursor-pointer">
-                    <CalendarDays className="h-4 w-4" />
-                    <span>Book Appointment</span>
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DoctorReelsSection />
 
       {/* ========================================================================= */}
       {/* 4. WHY CHOOSE TRUDENT (GENUINE CLINICAL STANDARDS - NO FAKE STATS)         */}

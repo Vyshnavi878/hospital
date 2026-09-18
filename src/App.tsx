@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppointmentsProvider } from "@/context/AppointmentsContext";
 import ScrollToTop from "@/components/common/ScrollToTop";
+import { MobileBottomNav } from "@/components/common/MobileBottomNav";
 
 // Public Pages
 import HomePage from "./pages/HomePage";
@@ -78,6 +79,7 @@ const App = () => (
             {/* 404 Catch-All */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <MobileBottomNav />
         </BrowserRouter>
       </AppointmentsProvider>
     </TooltipProvider>

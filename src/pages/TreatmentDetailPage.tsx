@@ -52,7 +52,7 @@ export const TreatmentDetailPage: React.FC = () => {
   const Icon = treatment.icon;
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* Hero Header */}
@@ -203,6 +203,37 @@ export const TreatmentDetailPage: React.FC = () => {
               ))}
             </div>
           </section>
+
+          {/* Lead Specialist Consultation Card */}
+          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-r from-slate-50 via-teal-50/20 to-white p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-left shadow-xs">
+            <div className="flex items-center gap-4">
+              <div className="relative h-14 w-14 sm:h-16 sm:w-16 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xs shrink-0 bg-slate-100">
+                <img
+                  src="/images/clinic/dr-deepa-portrait.png"
+                  alt="Dr. Deepa Koduri, BDS, MDS"
+                  className="w-full h-full object-cover object-top"
+                />
+                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-white" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold text-primary tracking-wide uppercase block">
+                  Lead Clinical Specialist
+                </span>
+                <h4 className="font-heading font-bold text-base text-slate-900 leading-snug">
+                  Consult Dr. Deepa Koduri for this Procedure
+                </h4>
+                <p className="text-xs text-slate-600 mt-0.5">
+                  BDS, MDS (Micro-Endodontics) • Gentle, evidence-based care in Kakinada
+                </p>
+              </div>
+            </div>
+            <Link to="/appointment" className="shrink-0 w-full sm:w-auto">
+              <Button className="w-full sm:w-auto h-11 px-6 text-xs font-bold rounded-xl gap-2 bg-primary hover:bg-primary/90 text-white cursor-pointer shadow-xs">
+                <CalendarDays className="h-4 w-4" />
+                <span>Book This Treatment</span>
+              </Button>
+            </Link>
+          </div>
 
           {/* Back to Treatments link */}
           <div className="pt-2">

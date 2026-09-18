@@ -268,9 +268,13 @@ export const BookAppointmentView: React.FC<BookAppointmentViewProps> = ({ onBook
         <Card className="border border-sky-100 bg-gradient-to-r from-sky-50/70 via-white to-teal-50/40 shadow-sm overflow-hidden">
           <CardContent className="p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-start sm:items-center gap-3.5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-inner">
-                  <Stethoscope className="h-6 w-6" />
+              <div className="flex items-center gap-3">
+                <div className="relative h-12 w-12 shrink-0 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xs bg-slate-100">
+                  <img
+                    src="/images/clinic/dr-deepa-portrait.png"
+                    alt={DOCTOR_NAME}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -561,7 +565,7 @@ export const BookAppointmentView: React.FC<BookAppointmentViewProps> = ({ onBook
                   </p>
                 </div>
 
-                <div className="flex justify-center">
+                <div id="calendar-wrapper" className="flex justify-center">
                   <Calendar
                     mode="single"
                     selected={selectedDate}
@@ -865,7 +869,7 @@ export const BookAppointmentView: React.FC<BookAppointmentViewProps> = ({ onBook
               <div className="p-3 rounded-xl bg-muted/40 border border-border text-[11px] text-muted-foreground flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
                 <span>
-                  Your patient details are secured under TRUDENT HIPAA/NABH health privacy standards. No login credentials or passwords are ever requested here.
+                  Your patient details are secured under TRUDENT HIPAA/NABH health privacy standards. Confidential and protected clinical records.
                 </span>
               </div>
             </div>

@@ -125,7 +125,7 @@ export const TreatmentsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* ========================================================================= */}
@@ -141,9 +141,9 @@ export const TreatmentsPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* CATEGORY FILTER PILLS (SUPPORTED CLINIC CATEGORIES ONLY)                   */}
       {/* ========================================================================= */}
-      <section className="py-6 bg-slate-50 border-b border-slate-200/80">
+      <section className="py-4 sm:py-6 bg-slate-50/95 backdrop-blur-xs border-b border-slate-200/80 sticky top-16 z-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1.5 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1.5 scrollbar-none touch-pan-x">
             {categories.map((cat) => {
               const isActive = selectedCategory === cat;
               const label = cat === "all" ? `All Services (${TREATMENTS_DATA.length})` : cat;
@@ -356,18 +356,28 @@ export const TreatmentsPage: React.FC = () => {
           </div>
 
           {/* Clinical Commitment Card */}
-          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-r from-slate-50 via-teal-50/10 to-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left shadow-xs">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                <ShieldCheck className="h-4 w-4 text-primary" />
-                <span>UNSURE WHICH TREATMENT YOU NEED?</span>
+          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-r from-slate-50 via-teal-50/20 to-white p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-left shadow-xs">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xs shrink-0 bg-slate-100">
+                <img
+                  src="/images/clinic/dr-deepa-portrait.png"
+                  alt="Dr. Deepa Koduri, BDS, MDS"
+                  className="w-full h-full object-cover object-top"
+                />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-500 border-2 border-white" />
               </div>
-              <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-900">
-                Book a Diagnostic Consultation with Dr. Deepa Koduri
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                During your visit, Dr. Deepa Koduri will conduct a comprehensive clinical examination, evaluate your symptoms, and explain all suitable treatment options with full fee transparency.
-              </p>
+              <div className="space-y-1.5 max-w-xl">
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                  <ShieldCheck className="h-4 w-4 text-primary" />
+                  <span>UNSURE WHICH TREATMENT YOU NEED?</span>
+                </div>
+                <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-900">
+                  Book a Diagnostic Consultation with Dr. Deepa Koduri
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  During your visit, Dr. Deepa Koduri will conduct a comprehensive clinical examination, evaluate your symptoms, and explain all suitable treatment options with full fee transparency.
+                </p>
+              </div>
             </div>
 
             <div className="shrink-0 w-full md:w-auto">

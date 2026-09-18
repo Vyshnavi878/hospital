@@ -40,6 +40,7 @@ import { AppointmentDetailsModal } from "@/components/common/AppointmentDetailsM
 import { TimeSlot } from "@/components/common/TimeSlot";
 
 import PatientSidebar from "./PatientSidebar";
+import PatientMobileBottomNav from "./PatientMobileBottomNav";
 import AppointmentsTab from "./AppointmentsTab";
 import DocumentsTab from "./DocumentsTab";
 import ProfileTab from "./ProfileTab";
@@ -274,7 +275,7 @@ const PatientDashboard = () => {
           </header>
 
           {/* Main Content Area */}
-          <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
+          <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto pb-24 md:pb-8">
             {activeView === "dashboard" && (
               <div className="space-y-6 max-w-7xl mx-auto animate-fade-in">
                 {/* 1. Welcome Section */}
@@ -711,6 +712,13 @@ const PatientDashboard = () => {
             )}
           </main>
         </div>
+
+        {/* Dedicated Patient Mobile Bottom Navigation Bar (Mobile Only) */}
+        <PatientMobileBottomNav
+          activeView={activeView}
+          onViewChange={setActiveView}
+          upcomingCount={upcomingAppointments.length}
+        />
       </div>
 
       {/* Reusable Appointment Details Modal */}

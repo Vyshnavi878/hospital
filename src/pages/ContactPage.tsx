@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   MapPin,
   Phone,
+  PhoneCall,
   Clock,
   ExternalLink,
   CalendarDays,
@@ -24,7 +25,7 @@ export const ContactPage: React.FC = () => {
     "https://maps.google.com/maps?q=16.9592884,82.2340332&hl=en&z=17&output=embed";
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* ========================================================================= */}
@@ -140,6 +141,30 @@ export const ContactPage: React.FC = () => {
                     <span>Book Appointment</span>
                   </Button>
                 </Link>
+              </div>
+
+              {/* Instant Mobile Connect Strip */}
+              <div className="p-4 rounded-2xl bg-teal-50/60 border border-teal-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-teal-950 font-semibold">
+                  <PhoneCall className="h-4 w-4 text-primary shrink-0" />
+                  <span>Quick Contact Options:</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://wa.me/919063584448"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 rounded-xl bg-emerald-600 text-white font-semibold text-xs hover:bg-emerald-700 transition-colors shadow-2xs inline-flex items-center gap-1.5"
+                  >
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                  <a
+                    href="tel:+919063584448"
+                    className="px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 font-semibold text-xs hover:bg-slate-50 transition-colors shadow-2xs inline-flex items-center gap-1.5"
+                  >
+                    <span>Direct Call</span>
+                  </a>
+                </div>
               </div>
             </div>
 

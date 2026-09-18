@@ -9,6 +9,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { TrudentLogo } from "@/components/common/TrudentLogo";
+import { cn } from "@/lib/utils";
 import {
   Sidebar,
   SidebarContent,
@@ -59,11 +60,23 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
   return (
     <Sidebar collapsible="icon" className="border-r border-border/80 bg-card">
       {/* Header with official TRUDENT branding */}
-      <SidebarHeader className="p-4 border-b border-border/60">
-        <div className="flex items-center">
+      <SidebarHeader
+        className={cn(
+          "border-b border-border/60 transition-all",
+          collapsed ? "p-1.5 flex items-center justify-center" : "p-4"
+        )}
+      >
+        <div className="flex items-center justify-center">
           {collapsed ? (
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary font-bold">
-              <CalendarPlus className="h-5 w-5" />
+            <div
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white border border-border/80 shadow-2xs p-1"
+              title="TRUDENT Multispeciality Dental Hospital"
+            >
+              <img
+                src="/favicon.png"
+                alt="TRUDENT"
+                className="h-full w-full object-contain"
+              />
             </div>
           ) : (
             <div className="flex flex-col gap-1">
@@ -76,7 +89,7 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-2 py-3 space-y-4">
+      <SidebarContent className={cn("py-3 space-y-4", collapsed ? "px-1" : "px-2")}>
         {/* MAIN SECTION */}
         <SidebarGroup className="p-0">
           {!collapsed && (
@@ -85,18 +98,26 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
             </SidebarGroupLabel>
           )}
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-1.5">
               {mainNavItems.map((item) => {
                 const isActive = activeView === item.value;
                 return (
-                  <SidebarMenuItem key={item.value}>
+                  <SidebarMenuItem key={item.value} className={collapsed ? "flex justify-center" : ""}>
                     <SidebarMenuButton
                       onClick={() => onViewChange(item.value)}
                       isActive={isActive}
                       tooltip={item.title}
-                      className="gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer text-muted-foreground hover:text-foreground hover:bg-muted/60 data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:font-semibold data-[active=true]:shadow-xs"
+                      className={cn(
+                        "rounded-xl transition-all cursor-pointer",
+                        collapsed
+                          ? "h-9 w-9 p-0 flex items-center justify-center mx-auto"
+                          : "gap-3 px-3 py-2.5 text-sm font-medium",
+                        isActive
+                          ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                      )}
                     >
-                      <item.icon className="h-4 w-4 shrink-0" />
+                      <item.icon className="h-4.5 w-4.5 shrink-0" />
                       {!collapsed && <span>{item.title}</span>}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -114,18 +135,26 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
             </SidebarGroupLabel>
           )}
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-1.5">
               {healthNavItems.map((item) => {
                 const isActive = activeView === item.value;
                 return (
-                  <SidebarMenuItem key={item.value}>
+                  <SidebarMenuItem key={item.value} className={collapsed ? "flex justify-center" : ""}>
                     <SidebarMenuButton
                       onClick={() => onViewChange(item.value)}
                       isActive={isActive}
                       tooltip={item.title}
-                      className="gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer text-muted-foreground hover:text-foreground hover:bg-muted/60 data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:font-semibold data-[active=true]:shadow-xs"
+                      className={cn(
+                        "rounded-xl transition-all cursor-pointer",
+                        collapsed
+                          ? "h-9 w-9 p-0 flex items-center justify-center mx-auto"
+                          : "gap-3 px-3 py-2.5 text-sm font-medium",
+                        isActive
+                          ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                      )}
                     >
-                      <item.icon className="h-4 w-4 shrink-0" />
+                      <item.icon className="h-4.5 w-4.5 shrink-0" />
                       {!collapsed && <span>{item.title}</span>}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -137,16 +166,26 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
       </SidebarContent>
 
       {/* BOTTOM FOOTER */}
-      <SidebarFooter className="p-3 border-t border-border/60 bg-muted/20">
-        <div className="space-y-2">
+      <SidebarFooter
+        className={cn(
+          "border-t border-border/60 bg-muted/20 transition-all",
+          collapsed ? "p-1.5 flex flex-col items-center gap-1.5" : "p-3 space-y-2"
+        )}
+      >
+        <div className={cn("w-full", collapsed ? "flex flex-col items-center gap-2" : "space-y-2")}>
           {/* Profile row */}
           <button
             type="button"
             onClick={() => onViewChange("profile")}
             title="View Patient Profile"
-            className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-muted/80 transition-colors text-left cursor-pointer group"
+            className={cn(
+              "flex items-center rounded-xl transition-colors cursor-pointer group",
+              collapsed
+                ? "h-9 w-9 justify-center mx-auto hover:bg-muted/80"
+                : "w-full gap-3 p-2 hover:bg-muted/80 text-left"
+            )}
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground text-sm font-bold shadow-xs">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground text-xs font-bold shadow-xs">
               {username.charAt(0).toUpperCase()}
             </div>
             {!collapsed && (
@@ -167,9 +206,14 @@ const PatientSidebar = ({ activeView, onViewChange, onLogout }: PatientSidebarPr
             type="button"
             onClick={handleLogout}
             title="Log Out"
-            className="w-full flex items-center gap-3 px-2 py-2 rounded-xl text-xs font-medium text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
+            className={cn(
+              "flex items-center rounded-xl text-xs font-medium text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer",
+              collapsed
+                ? "h-9 w-9 justify-center mx-auto hover:bg-destructive/10"
+                : "w-full gap-3 px-2 py-2"
+            )}
           >
-            <LogOut className="h-4 w-4 shrink-0" />
+            <LogOut className="h-4.5 w-4.5 shrink-0" />
             {!collapsed && <span>Logout</span>}
           </button>
         </div>

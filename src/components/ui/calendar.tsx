@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, useDayRender } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -44,6 +44,24 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
       components={{
         IconLeft: ({ ..._props }) => <ChevronLeft className="h-4 w-4" />,
         IconRight: ({ ..._props }) => <ChevronRight className="h-4 w-4" />,
+        Day: (dayProps) => {
+          const buttonRef = React.useRef<HTMLButtonElement>(null);
+          const dayRender = useDayRender(dayProps.date, dayProps.displayMonth, buttonRef);
+          if (dayRender.isHidden) {
+            return <div role="gridcell" />;
+          }
+          if (!dayRender.isButton) {
+            return <div {...dayRender.divProps} />;
+          }
+          return (
+            <button
+              name="day"
+              ref={buttonRef}
+              {...dayRender.buttonProps}
+              role="button"
+            />
+          );
+        },
       }}
       {...props}
     />

@@ -6,7 +6,6 @@ import { PageHeader } from "@/components/common/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import consultationImage from "@/assets/hospital-consultation.jpg";
 import {
   Sparkles,
   ShieldCheck,
@@ -167,7 +166,7 @@ export const AboutPage: React.FC = () => {
     setTouchEndX(null);
   };
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* ========================================================================= */}
@@ -231,18 +230,18 @@ export const AboutPage: React.FC = () => {
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100 group">
                   <img
-                    src={consultationImage}
-                    alt="Doctor and patient consultation at TRUDENT Multispeciality Dental Hospital"
+                    src="/images/clinic/trudent-reception.png"
+                    alt="TRUDENT Multispeciality Dental Hospital Reception Desk and Executive Lounge"
                     className="w-full h-[360px] sm:h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
 
                   <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 shadow-sm text-left">
                     <h4 className="font-heading font-bold text-sm text-slate-900">
-                      TRUDENT Dental Consultation
+                      TRUDENT Reception & Executive Lounge
                     </h4>
                     <p className="text-xs text-slate-500 font-medium mt-0.5">
-                      Personalized examinations, open discussion, and clinical care.
+                      Warm, hygienic reception desk and air-conditioned patient lounge in Kakinada.
                     </p>
                   </div>
                 </div>
@@ -516,31 +515,35 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 5: MEET OUR DOCTOR (PRIMARY DOCTOR)                               */}
+      {/* SECTION 5: CLINICAL LEADERSHIP (PRIMARY DOCTOR SPOTLIGHT)                 */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-10">
-            <div className="space-y-2.5">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-2">
               <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold text-primary">
                 <Stethoscope className="h-3.5 w-3.5" />
-                <span>PRIMARY DOCTOR</span>
+                <span>CLINICAL LEADERSHIP</span>
               </div>
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Meet Our Doctor
+                Hospital Clinical Leadership
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Meet Dr. Deepa Koduri, the primary doctor leading clinical care at TRUDENT Multispeciality Dental Hospital.
+              <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+                Patient care at TRUDENT Multispeciality Dental Hospital is personally led and supervised by our Chief Specialist.
               </p>
             </div>
 
-            {/* Single Doctor Card */}
-            <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-teal-50/20 shadow-md p-6 sm:p-9 text-left relative overflow-hidden">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
-                {/* Doctor Monogram */}
+            {/* Executive Leadership Spotlight Card */}
+            <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-teal-50/20 shadow-md p-6 sm:p-8 text-left relative overflow-hidden">
+              <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                {/* Doctor Avatar / Photo */}
                 <div className="relative shrink-0">
-                  <div className="flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-2xl bg-gradient-to-br from-primary via-teal-600 to-accent text-white font-heading font-extrabold text-3xl shadow-md">
-                    DK
+                  <div className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden border-2 border-primary/25 shadow-md bg-slate-100">
+                    <img
+                      src="/images/clinic/dr-deepa-portrait.png"
+                      alt="Dr. Deepa Koduri, BDS, MDS (Micro-Endodontics)"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-1 rounded-full border-2 border-white shadow-xs">
                     <CheckCircle2 className="h-4 w-4" />
@@ -548,13 +551,13 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 {/* Doctor Details */}
-                <div className="space-y-3 min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
+                <div className="space-y-3 min-w-0 flex-1 text-center sm:text-left">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
                     <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-bold px-2.5 py-0.5">
-                      Endodontist
+                      BDS, MDS (Micro-Endodontics)
                     </Badge>
                     <Badge variant="outline" className="text-xs font-semibold text-slate-700 border-slate-300 bg-white">
-                      Root Canal Specialist
+                      Clinical Director
                     </Badge>
                   </div>
 
@@ -563,46 +566,20 @@ export const AboutPage: React.FC = () => {
                       Dr. Deepa Koduri
                     </h3>
                     <p className="text-xs sm:text-sm font-semibold text-primary mt-0.5">
-                      Endodontist • Root Canal Specialist
+                      Endodontist & Root Canal Specialist • Hospital Clinical Director
                     </p>
                   </div>
 
-                  {/* Professional Approach */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-teal-50/80 border border-teal-200/60 text-xs font-medium text-teal-900">
-                    <span>Gentle</span>
-                    <span className="text-teal-400">•</span>
-                    <span>Stress-free</span>
-                    <span className="text-teal-400">•</span>
-                    <span>Evidence-based</span>
-                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Dr. Deepa Koduri provides direct, personalized clinical oversight for every procedure at TRUDENT — from conservative restorations to micro-endodontic root canal treatments.
+                  </p>
 
-                  {/* Advanced Technology */}
-                  <div className="text-xs sm:text-sm text-slate-600 space-y-1">
-                    <span className="font-medium text-slate-700 block">
-                      Advanced dental care with modern technology, including:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-semibold text-slate-800">
-                      <span>Laser Dentistry</span>
-                      <span className="text-slate-300">•</span>
-                      <span>Implants</span>
-                      <span className="text-slate-300">•</span>
-                      <span>Aligners</span>
-                    </div>
-                  </div>
-
-                  {/* Location, Phone & Instagram */}
-                  <div className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs text-slate-600 font-medium">
+                  {/* Location & Social */}
+                  <div className="pt-1 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600 font-medium">
                     <span className="flex items-center gap-1.5 text-slate-700">
                       <MapPin className="h-3.5 w-3.5 text-primary" />
                       <span>Kakinada</span>
                     </span>
-                    <a
-                      href="tel:+919063584448"
-                      className="flex items-center gap-1.5 text-slate-700 hover:text-primary transition-colors"
-                    >
-                      <PhoneCall className="h-3.5 w-3.5 text-primary" />
-                      <span>+91 9063584448</span>
-                    </a>
                     <a
                       href="https://www.instagram.com/trudent_kakinada/"
                       target="_blank"
@@ -616,31 +593,20 @@ export const AboutPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-6 mt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3.5">
-                <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
-                  <Link to="/doctors" className="w-full sm:w-auto">
-                    <Button
-                      variant="outline"
-                      className="w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-xl border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 gap-2 h-11 px-5 cursor-pointer"
-                    >
-                      <UserRound className="h-4 w-4 text-slate-500" />
-                      <span>Meet Our Doctor</span>
-                    </Button>
-                  </Link>
-
-                  <a
-                    href="https://www.instagram.com/trudent_kakinada/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-4 rounded-xl border border-pink-200 bg-pink-50/50 hover:bg-pink-100/70 text-xs sm:text-sm font-semibold text-pink-700 transition-colors"
+              {/* Action Buttons: Learn More on Doctors Page or Book */}
+              <div className="pt-5 mt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <Link to="/doctors" className="w-full sm:w-auto">
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-xl border-slate-300 text-slate-800 hover:bg-slate-100 hover:text-slate-900 gap-2 h-11 px-5 cursor-pointer shadow-2xs"
                   >
-                    <Instagram className="h-4 w-4 text-pink-600" />
-                    <span>@trudent_kakinada</span>
-                  </a>
-                </div>
+                    <UserRound className="h-4 w-4 text-primary" />
+                    <span>Meet Our Doctor</span>
+                    <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
+                  </Button>
+                </Link>
 
-                <Link to="/appointment?doctor=Dr.%20Deepa%20Koduri" className="w-full sm:w-auto">
+                <Link to="/appointment" className="w-full sm:w-auto">
                   <Button className="w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-xl gap-2 shadow-xs bg-primary hover:bg-primary/90 text-white h-11 px-6 cursor-pointer">
                     <CalendarDays className="h-4 w-4" />
                     <span>Book Appointment</span>

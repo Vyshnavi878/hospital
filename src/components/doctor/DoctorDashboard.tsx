@@ -45,6 +45,7 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { useToast } from "@/hooks/use-toast";
 
 import DoctorSidebar from "./DoctorSidebar";
+import DoctorMobileBottomNav from "./DoctorMobileBottomNav";
 import DoctorAppointmentsTab from "./DoctorAppointmentsTab";
 import PrescriptionsTab from "./PrescriptionsTab";
 import DoctorProfileTab from "./DoctorProfileTab";
@@ -256,7 +257,7 @@ const DoctorDashboard = () => {
           </header>
 
           {/* Main Content Area */}
-          <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
+          <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto pb-24 md:pb-8">
             {activeView === "dashboard" && (
               <div className="space-y-6 max-w-7xl mx-auto animate-fade-in">
                 {/* 1. Welcome Section */}
@@ -668,6 +669,19 @@ const DoctorDashboard = () => {
             )}
           </main>
         </div>
+
+        {/* Dedicated Doctor Mobile Bottom Navigation Bar (Mobile Only) */}
+        <DoctorMobileBottomNav
+          activeView={activeView}
+          onViewChange={(view) => {
+            setActiveView(view);
+            if (view !== "prescriptions") {
+              setPrescriptionPatient("");
+              setPrescriptionDiagnosis("");
+            }
+          }}
+          pendingCount={pendingAppts.length}
+        />
       </div>
 
       {/* DOCTOR APPOINTMENT / PATIENT INFORMATION MODAL */}

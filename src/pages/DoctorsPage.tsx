@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { PublicNavbar } from "@/components/common/PublicNavbar";
 import { PublicFooter } from "@/components/common/PublicFooter";
 import { PageHeader } from "@/components/common/PageHeader";
+import { ClinicShowcase } from "@/components/common/ClinicShowcase";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import doctorImage from "@/assets/hospital-consultation.jpg";
+import { cn } from "@/lib/utils";
 import {
   Stethoscope,
   CalendarDays,
@@ -24,11 +25,14 @@ import {
   Activity,
   Layers,
   Instagram,
+  Eye,
 } from "lucide-react";
 
 export const DoctorsPage: React.FC = () => {
+  const [activePhoto, setActivePhoto] = useState<"portrait" | "surgery">("portrait");
+
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-primary/10 selection:text-primary pb-16 md:pb-0">
       <PublicNavbar />
 
       {/* ========================================================================= */}
@@ -59,18 +63,49 @@ export const DoctorsPage: React.FC = () => {
                   {/* Photo Frame */}
                   <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100 group">
                     <img
-                      src={doctorImage}
-                      alt="Dr. Deepa Koduri conducting a patient dental consultation at TRUDENT"
-                      className="w-full h-[360px] sm:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+                      src={
+                        activePhoto === "portrait"
+                          ? "/images/clinic/dr-deepa-portrait.png"
+                          : "/images/clinic/dr-deepa-treatment.png"
+                      }
+                      alt="Dr. Deepa Koduri, BDS, MDS (Micro-Endodontics)"
+                      className="w-full h-[360px] sm:h-[420px] object-cover object-top transition-all duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
 
-                    {/* Verified Status Tag */}
-                    <div className="absolute top-4 left-4">
+                    {/* Verified Status Tag & Interactive Photo Switcher */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 flex-wrap">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/85 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white border border-white/20">
                         <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Accepting New Patients</span>
+                        <span>Accepting Patients</span>
                       </span>
+
+                      <div className="inline-flex items-center bg-slate-900/85 backdrop-blur-md rounded-full p-1 border border-white/20 text-[11px] text-white shadow-xs">
+                        <button
+                          type="button"
+                          onClick={() => setActivePhoto("portrait")}
+                          className={cn(
+                            "px-2.5 py-0.5 rounded-full font-semibold transition-all cursor-pointer",
+                            activePhoto === "portrait"
+                              ? "bg-primary text-white shadow-xs"
+                              : "text-slate-300 hover:text-white"
+                          )}
+                        >
+                          Portrait
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setActivePhoto("surgery")}
+                          className={cn(
+                            "px-2.5 py-0.5 rounded-full font-semibold transition-all cursor-pointer",
+                            activePhoto === "surgery"
+                              ? "bg-primary text-white shadow-xs"
+                              : "text-slate-300 hover:text-white"
+                          )}
+                        >
+                          In Surgery
+                        </button>
+                      </div>
                     </div>
 
                     {/* Bottom Photo Overlay Tag */}
@@ -84,7 +119,7 @@ export const DoctorsPage: React.FC = () => {
                             Dr. Deepa Koduri
                           </h4>
                           <p className="text-xs text-slate-500 font-medium">
-                            Endodontist • Root Canal Specialist
+                            BDS, MDS (Micro-Endodontics) • Root Canal Specialist
                           </p>
                         </div>
                       </div>
@@ -110,10 +145,10 @@ export const DoctorsPage: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-bold px-3 py-1">
-                      Endodontist
+                      BDS, MDS (Micro-Endodontics)
                     </Badge>
                     <Badge variant="outline" className="text-xs font-semibold text-slate-700 border-slate-300 bg-white">
-                      Root Canal Specialist
+                      Endodontist • Root Canal Specialist
                     </Badge>
                     <Badge variant="secondary" className="text-xs font-semibold text-teal-800 bg-teal-50 border border-teal-200">
                       TRUDENT Kakinada
@@ -125,7 +160,7 @@ export const DoctorsPage: React.FC = () => {
                   </h1>
 
                   <p className="text-sm sm:text-base text-primary font-semibold">
-                    Endodontist • Root Canal Specialist
+                    Endodontist • Root Canal Specialist • BDS, MDS
                   </p>
                 </div>
 
@@ -301,6 +336,13 @@ export const DoctorsPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Hospital Facilities & Equipment Showcase - Exclusive to Doctors Page */}
+      <ClinicShowcase
+        badge="CLINICAL INFRASTRUCTURE"
+        title="Explore TRUDENT Multispeciality Dental Hospital"
+        subtitle="Take a look inside our high-precision operatory suites, UV-sanitized chairs, surgical lighting, and reception facilities in Kakinada."
+      />
 
       <PublicFooter />
     </div>

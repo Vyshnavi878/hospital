@@ -6,6 +6,7 @@ import { LogOut, Search, Bell } from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { NotificationPopover } from "@/components/common/NotificationPopover";
 import AdminSidebar from "./AdminSidebar";
+import AdminMobileBottomNav from "./AdminMobileBottomNav";
 import AdminOverviewTab from "./AdminOverviewTab";
 import AdminDoctorsTab from "./AdminDoctorsTab";
 import AdminAppointmentsTab from "./AdminAppointmentsTab";
@@ -53,12 +54,15 @@ const AdminDashboard = () => {
             </div>
           </header>
 
-          <main className="flex-1 p-6 overflow-auto">
+          <main className="flex-1 p-6 overflow-auto pb-24 md:pb-6">
             {activeView === "dashboard" && <AdminOverviewTab />}
             {activeView === "doctors" && <AdminDoctorsTab />}
             {activeView === "appointments" && <AdminAppointmentsTab />}
           </main>
         </div>
+
+        {/* Dedicated Admin Mobile Bottom Navigation Bar (Mobile Only) */}
+        <AdminMobileBottomNav activeView={activeView} onViewChange={setActiveView} />
       </div>
     </SidebarProvider>
   );
